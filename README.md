@@ -1,1 +1,1 @@
-github pages https://BogdanUlich.github.io/kanban-board
+github pages https://BogdanUlich.github.io/new-kanban-board

@@ -152,9 +152,11 @@ const boardSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchData.fulfilled, (state, action) => {
-                state.boardLists = action.payload.boardLists
-                state.listCounter = action.payload.listCounter
-                state.taskCounter = action.payload.taskCounter
+                if (action.payload) {
+                    state.boardLists = action.payload.boardLists
+                    state.listCounter = action.payload.listCounter
+                    state.taskCounter = action.payload.taskCounter
+                }
                 state.loadingStatus = 'success'
             })
             .addCase(fetchData.pending, (state) => {

@@ -62,7 +62,7 @@ const boardSlice = createSlice({
         addNewList: (state) => {
             state.listCounter += 1
 
-            state.boardLists.unshift({ id: state.listCounter, title: '', tasks: [] })
+            state.boardLists.push({ id: state.listCounter, title: '', tasks: [] })
         },
         setListTitle: (state, action: PayloadAction<SetListTitleAction>) => {
             const list = findList(state, action.payload.id)

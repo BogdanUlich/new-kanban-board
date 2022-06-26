@@ -164,6 +164,7 @@ body {
 .header {
   height: 30px;
   position: fixed;
+  z-index: 50;
   top: 0;
   left: 0;
   width: 100%;
@@ -283,37 +284,42 @@ body {
 
 .board-list {
   background: $light-gray;
-  justify-content: flex-start;
   min-width: 270px;
   padding: 14px 10px;
-  max-height: 100%;
   border-radius: 5px;
+  overflow: hidden;
   align-self: flex-start;
-  overflow-y: auto;
-  gap: 10px;
+  max-height: 100%;
+  gap: 12px;
   @include sm {
     width: 100%;
     min-height: 86px;
     max-height: 400px;
   }
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-  &::-webkit-scrollbar-track {
-    background: $light-gray;
-  }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: $secondary;
-    border-radius: 20px;
-    border: 2px solid $light-gray;
-  }
+  &__container {
+    gap: 10px;
+    overflow-y: auto;
+    justify-content: flex-start;
+    max-height: 100%;
+    padding-right: 4px;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      background: $light-gray;
+    }
 
+    &::-webkit-scrollbar-thumb {
+      background-color: $secondary;
+      border-radius: 20px;
+      border: 2px solid $light-gray;
+    }
+  }
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 8px;
     padding: 0 5px;
     gap: 10px;
     &-icon {
@@ -328,7 +334,6 @@ body {
     align-items: center;
     gap: 10px;
     cursor: pointer;
-    margin-top: 8px;
     &-icon {
       width: 14px;
       height: 14px;

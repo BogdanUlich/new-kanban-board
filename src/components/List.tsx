@@ -28,15 +28,17 @@ const BoardList: FC<BoardListProps> = ({ id, title, tasks, onDeleteList, onAddTa
 
     const onListTitleUpdate = useCallback(
         debounce(() => {
-            dispatch(setListTitle({ title: boardListTitle, id }))
+            if (listTitleRef.current) {
+                dispatch(setListTitle({ title: listTitleRef.current?.value, id }))
+            }
         }, 500),
         []
     )
 
     const onChangeListTitle = () => {
-        onListTitleUpdate()
         if (listTitleRef.current) {
             setBoardListTitle(listTitleRef.current.value)
+            onListTitleUpdate()
         }
     }
 
@@ -72,9 +74,13 @@ const BoardList: FC<BoardListProps> = ({ id, title, tasks, onDeleteList, onAddTa
                     }}
                 />
             </div>
-            {tasks.map((obj) => (
-                <Task taskId={obj.id} text={obj.text} key={obj.id} listId={id} />
-            ))}
+
+            <div className="board-list__container column">
+                {tasks.map((obj) => (
+                    <Task taskId={obj.id} text={obj.text} key={obj.id} listId={id} />
+                ))}
+            </div>
+
             <div
                 className="board-list__footer"
                 onClick={() => onAddTask(id)}

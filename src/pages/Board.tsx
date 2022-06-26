@@ -16,7 +16,7 @@ const Board: FC = () => {
     const dispatch = useAppDispatch()
     const auth = getAuth()
 
-    const [user, loading, error] = useAuthState(auth)
+    const [user] = useAuthState(auth)
 
     const onAddNewList = () => {
         dispatch(addNewList())

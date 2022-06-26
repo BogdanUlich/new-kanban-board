@@ -7,10 +7,11 @@ import { getAuth } from 'firebase/auth'
 const Header: FC = () => {
     const auth = getAuth()
 
-    const [user, loading, error] = useAuthState(auth)
+    const [user] = useAuthState(auth)
 
     const onClickLogout = () => {
         auth.signOut()
+        window.location.reload()
     }
 
     return (
@@ -20,10 +21,10 @@ const Header: FC = () => {
                     Kanban-board
                 </Link>
                 {user && (
-                    <a href="/" className="header__logout">
+                    <button className="header__logout">
                         <span onClick={onClickLogout}>Выйти</span>
                         <img src={exit} alt="" className="header__icon" />
-                    </a>
+                    </button>
                 )}
             </div>
         </div>

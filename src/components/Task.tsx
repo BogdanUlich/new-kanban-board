@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useRef, useState } from 'react'
+import { FC, memo, useCallback, useEffect, useRef, useState } from 'react'
 import { useAppDispatch } from '../hooks/reduxHooks'
 import {
     changeTaskOrder,
@@ -16,7 +16,7 @@ interface TaskProps {
     listId: number
 }
 
-const Task: FC<TaskProps> = ({ taskId, text, listId }) => {
+const Task: FC<TaskProps> = memo(({ taskId, text, listId }) => {
     const taskTextRef = useRef<HTMLTextAreaElement>(null)
     const taskRef = useRef<HTMLDivElement>(null)
 
@@ -107,6 +107,5 @@ const Task: FC<TaskProps> = ({ taskId, text, listId }) => {
             <img src={trashIcon} alt="" className="task__icon" onClick={onRemoveTask} />
         </div>
     )
-}
-
+})
 export default Task

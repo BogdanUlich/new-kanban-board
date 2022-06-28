@@ -1,5 +1,5 @@
 import { getAuth } from 'firebase/auth'
-import { FC, useEffect } from 'react'
+import { FC, useCallback, useEffect } from 'react'
 import InitialBoardList from '../components/InitialList'
 import BoardList from '../components/List'
 import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks'
@@ -18,17 +18,17 @@ const Board: FC = () => {
 
     const [user] = useAuthState(auth)
 
-    const onAddNewList = () => {
+    const onAddNewList = useCallback(() => {
         dispatch(addNewList())
-    }
+    }, [])
 
-    const onDeleteList = (id: number) => {
+    const onDeleteList = useCallback((id: number) => {
         dispatch(deleteList(id))
-    }
+    }, [])
 
-    const onAddTask = (listId: number) => {
+    const onAddTask = useCallback((listId: number) => {
         dispatch(addNewtask(listId))
-    }
+    }, [])
 
     useEffect(() => {
         if (user) {

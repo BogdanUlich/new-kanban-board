@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useRef, useState } from 'react'
+import { FC, memo, useCallback, useEffect, useRef, useState } from 'react'
 import { TaskType } from '../types'
 import Task from './Task'
 import plus from '../assets/img/icons/plus.svg'
@@ -15,7 +15,7 @@ interface BoardListProps {
     onAddTask: (id: number) => void
 }
 
-const BoardList: FC<BoardListProps> = ({ id, title, tasks, onDeleteList, onAddTask }) => {
+const BoardList: FC<BoardListProps> = memo(({ id, title, tasks, onDeleteList, onAddTask }) => {
     const dispatch = useAppDispatch()
 
     const [boardListTitle, setBoardListTitle] = useState<string>('')
@@ -92,6 +92,6 @@ const BoardList: FC<BoardListProps> = ({ id, title, tasks, onDeleteList, onAddTa
             </div>
         </div>
     )
-}
+})
 
 export default BoardList

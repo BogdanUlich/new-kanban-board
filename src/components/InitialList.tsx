@@ -1,11 +1,11 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import plus from '../assets/img/icons/plus.svg'
 
 interface InitialBoardListProps {
     onAddNewList: () => void
 }
 
-const InitialBoardList: FC<InitialBoardListProps> = ({ onAddNewList }) => {
+const InitialBoardList: FC<InitialBoardListProps> = memo(({ onAddNewList }) => {
     return (
         <div className="board-list board-list_initial column">
             <div className="board-list__btn" onClick={onAddNewList}>
@@ -14,6 +14,6 @@ const InitialBoardList: FC<InitialBoardListProps> = ({ onAddNewList }) => {
             </div>
         </div>
     )
-}
+})
 
 export default InitialBoardList
